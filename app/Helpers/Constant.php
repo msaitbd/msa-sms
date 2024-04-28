@@ -1,0 +1,14 @@
+<?php
+
+
+// user type 
+const USER_TYPE_SUPER_ADMIN = 1;
+const USER_TYPE_ADMIN = 2;
+const USER_TYPE_TEACHER = 3;
+const USER_TYPE_STAFF = 4;
+const USER_TYPE_STUDENT = 5;
+const USER_TYPE_PARENT = 6;
+
+const USER_STATUS_INACTIVE = 0;
+const USER_STATUS_ACTIVE = 1;
+const USER_STATUS_SUSPENDED = 3;
