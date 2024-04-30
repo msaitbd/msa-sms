@@ -1,80 +1,86 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Login') }}</div>
-
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="row mb-3">
-                                <label for="email"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Email / Phone') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="text"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="password"
-                                    class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                            {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
-                                        </label>
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-10">
+                    <div class="card rounded-3 text-black">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="card-body p-md-5 mx-md-4">
+                                    <div class="text-center">
+                                        <img src="{{ asset('assets/images/logo.png') }}" style="width: 185px;"
+                                            alt="logo">
+                                        <h4 class="mt-1 mb-5 pb-1">Login to msa school</h4>
                                     </div>
+
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <p>Please login to your account</p>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example11">Username</label>
+                                            <input type="text" id="form2Example11" class="form-control" name="email"
+                                                placeholder="Phone number or email address" value="{{ old('email') }}"
+                                                autofocus />
+                                            @error('email')
+                                                <span class="text-danger">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <label class="form-label" for="form2Example22">Password</label>
+                                            <input type="password" id="form2Example22" class="form-control" name="password"
+                                                placeholder="Password" />
+                                            @error('password')
+                                                <span class="text-danger">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+
+                                        <div data-mdb-input-init class="form-outline mb-4">
+                                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                                {{ old('remember') ? 'checked' : '' }}>
+
+                                            <label class="form-check-label" for="remember">
+                                                {{ __('Remember Me') }}
+                                            </label>
+                                        </div>
+
+                                        <div class="d-grid text-center pt-1 mb-5 pb-1">
+                                            <button data-mdb-button-init data-mdb-ripple-init
+                                                class="btn btn-primary fa-lg gradient-custom-2 mb-3" type="submit">Log
+                                                in</button>
+                                            @if (Route::has('password.request'))
+                                                <a class="text-muted" href="{{ route('password.request') }}">Forgot
+                                                    password?</a>
+                                            @endif
+                                        </div>
+
+                                        <div class="d-flex align-items-center justify-content-center pb-4 d-none">
+                                            <p class="mb-0 me-2">Don't have an account?</p>
+                                            <button type="button" data-mdb-button-init data-mdb-ripple-init
+                                                class="btn btn-outline-danger">Create Admin for trial</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-
-                            <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Login') }}
-                                    </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
+                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                    <h4 class="mb-4">Welcome to our school</h4>
+                                    <p class="small mb-0">MSAsoft is your trusted partner in mastering the digital
+                                        landscape. Elevating Bangladesh's Digital Future through Innovative Coding
+                                        Solutions. </p>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection
