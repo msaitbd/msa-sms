@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="msa-dashboard_status msa-dashboard_status_style bg-style">
+                    <div class="msa-dashboard_status msa-dashboard_status_style bg-theme-style">
                         <div class="msa-dashboard_status_img">
                             <img src="assets/images/user.png" alt="icon">
                         </div>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="msa-dashboard_status msa-dashboard_status_style bg-style">
+                    <div class="msa-dashboard_status msa-dashboard_status_style bg-theme-style">
                         <div class="msa-dashboard_status_img">
                             <img src="assets/images/user.png" alt="icon">
                         </div>
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="msa-dashboard_status msa-dashboard_status_style bg-style">
+                    <div class="msa-dashboard_status msa-dashboard_status_style bg-theme-style">
                         <div class="msa-dashboard_status_img">
                             <img src="assets/images/user.png" alt="icon">
                         </div>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="msa-dashboard_status msa-dashboard_status_style bg-style">
+                    <div class="msa-dashboard_status msa-dashboard_status_style bg-theme-style">
                         <div class="msa-dashboard_status_img">
                             <img src="assets/images/user.png" alt="icon">
                         </div>

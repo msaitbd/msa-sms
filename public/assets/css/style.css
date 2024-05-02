@@ -245,7 +245,7 @@ img {
   color: #596680;
 }
 
-.bg-style {
+.bg-theme-style {
   background: #ffffff;
   border: 1px solid #E4E6EB;
   -webkit-box-sizing: border-box;
@@ -1705,4 +1705,9 @@ button {
   background-color: #ffffff;
   -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 30px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 30px;
+}
+
+.theme-content {
+  padding: 25px 25px 30px;
+  margin-bottom: 30px;
 }

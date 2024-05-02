@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('name')->nullable();
+            $table->string('username')->nullable();
             $table->string('email');
             $table->string('phone');
             $table->tinyInteger('type')->default(USER_TYPE_ADMIN);

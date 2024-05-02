@@ -11,16 +11,19 @@
     </div>
     <ul id="msa__metis__menu" class="msa-navbar_menu">
         <li class="mm-active">
-            <a class="has-arrow" href="#">
+            <a href="{{ route('super-admin.dashboard') }}">
                 <span>Dashboard</span>
             </a>
-            <ul>
-                <li class="mm-active">
-                    <a href="index.html">
-                        <span>default</span>
-                    </a>
-                </li>
-            </ul>
+        </li>
+        <li>
+            <a href="{{ route('super-admin.admin.index') }}">
+                <span>School Admin List</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span>School Admin Create</span>
+            </a>
         </li>
     </ul>
 </section>
