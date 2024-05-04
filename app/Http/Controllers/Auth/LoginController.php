@@ -61,6 +61,8 @@ class LoginController extends Controller
             $user = User::where($field, $request->email)->first();
             if ($user->status == USER_STATUS_ACTIVE && $user->type == USER_TYPE_SUPER_ADMIN) {
                 return redirect()->route('super-admin.dashboard');
+            } elseif ($user->status == USER_STATUS_ACTIVE && $user->type == USER_TYPE_ADMIN) {
+                return redirect()->route('admin.dashboard');
             } else {
                 Auth::logout();
                 return redirect("login")->with('error', __('Something Went Wrong'));

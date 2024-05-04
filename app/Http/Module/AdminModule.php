@@ -38,6 +38,7 @@ class AdminModule
             $user->name = $request->last_name;
             $user->email = $request->email;
             $user->phone = $request->phone;
+            $user->type = USER_TYPE_ADMIN;
             $user->created_by = auth()->id();
             $user->save();
             $user->admin_id = $user->id;
