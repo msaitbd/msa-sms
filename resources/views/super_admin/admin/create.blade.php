@@ -15,7 +15,7 @@
                             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">School Admin List</li>
+                                    <li class="breadcrumb-item active" aria-current="page">School Admin Create</li>
                                 </ul>
                             </nav>
                         </div>
@@ -28,7 +28,8 @@
                         <div class="mb-3">
                             <h2 class="h2">School Admin Create</h2>
                         </div>
-                        <form class="row g-3">
+                        <form class="row g-3" action="{{ route('super-admin.admin.store') }}" method="POST">
+                            @csrf
                             <div class="col-md-6">
                                 <label for="school_name" class="form-label">School Name</label>
                                 <input type="text" class="form-control" id="school_name">
@@ -58,7 +59,7 @@
                                 <label for="inputCity" class="form-label">Install Fee</label>
                                 <input type="text" class="form-control" id="inputCity">
                             </div>
-                            
+
                             <div class="col-12 text-end text-white">
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>

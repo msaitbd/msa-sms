@@ -9,5 +9,6 @@ Route::group(['prefix' => 'super-admin', 'as' => 'super-admin.', 'middleware' =>
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::get('create', [AdminController::class, 'create'])->name('create');
+        Route::post('store', [AdminController::class, 'store'])->name('store');
     });
 });
