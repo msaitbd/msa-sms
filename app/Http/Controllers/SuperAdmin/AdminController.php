@@ -17,7 +17,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('super_admin.admin.index');
+        $data['schools'] = $this->adminModule->getAll();
+        return view('super_admin.admin.index', $data);
     }
 
     public function create()

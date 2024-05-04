@@ -22,7 +22,15 @@ class AdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => 'required|string|max:100',
+            'last_name' => 'required|string|max:100',
+            'email' => 'required|email|string|max:100|unique:users,email',
+            'password' => 'required|string|min:6',
+            'phone' => 'required',
+            'school_name' => 'required',
+            'address' => 'required',
+            'service_charge' => 'required|numeric',
+            'install_fee' => 'required|numeric',
         ];
     }
 }

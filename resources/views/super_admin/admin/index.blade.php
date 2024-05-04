@@ -24,40 +24,52 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <div class="d-flex justify-content-between mb-3">
+                        <h2 class="h2">Example</h2>
+                        <a href="{{ route('super-admin.admin.create') }}"
+                            class="align-content-center btn btn-primary stretched-link text-white">Add New Admin</a>
+                    </div>
                     <div class="theme-content bg-theme-style">
-                        <div class="d-flex justify-content-between mb-3">
-                            <h2 class="h2">Example</h2>
-                            <a href="{{ route('super-admin.admin.create') }}" class="align-content-center btn btn-primary stretched-link text-white">Add New Admin</a>
-                        </div>
                         <div class="table-responsive">
                             <table class="table table-sm">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Customer name</th>
-                                        <th>gender</th>
-                                        <th>email address</th>
-                                        <th>phone number</th>
-                                        <th>address</th>
+                                        <th>Admin</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>School</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <span>Sean freeman</span>
-                                        </td>
-                                        <td>
-                                            <span>male</span>
-                                        </td>
-                                        <td>
-                                            <span>seanfreeman@gmail.com</span>
-                                        </td>
-                                        <td>
-                                            <span>2551 6995 2555</span>
-                                        </td>
-                                        <td>
-                                            <span>3159 Holly Street Cleveland, GA 30528</span>
-                                        </td>
-                                    </tr>
+                                    @foreach ($schools as $school)
+                                        <tr>
+                                            <td>
+                                                <span>{{ $school->admin->name }}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ $school->admin->email }}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ $school->admin->phone }}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ $school->school_name }}</span>
+                                            </td>
+                                            <td>
+                                                @if ($school->status == STATUS_ACTIVE)
+                                                    <span class="badge bg-success">Active</span>
+                                                @else
+                                                    <span class="badge bg-danger">Inactive</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href=""><i class="fa fa-edit text-primary"></i></a>
+                                                <a href=""><i class="fa fa-trash text-danger"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
