@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('admin_id');
             $table->string('school_name')->nullable();
+            $table->string('address')->nullable();
             $table->tinyInteger('status')->default(STATUS_INACTIVE);
             $table->decimal('service_charge', 12, 2)->default(0);
             $table->decimal('install_fee', 12, 2)->default(0);

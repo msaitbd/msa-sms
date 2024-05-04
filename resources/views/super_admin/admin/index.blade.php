@@ -27,7 +27,7 @@
                     <div class="d-flex justify-content-between mb-3">
                         <h2 class="h2">Example</h2>
                         <a href="{{ route('super-admin.admin.create') }}"
-                            class="align-content-center btn btn-primary stretched-link text-white">Add New Admin</a>
+                            class="align-content-center btn btn-primary text-white">Add New Admin</a>
                     </div>
                     <div class="theme-content bg-theme-style">
                         <div class="table-responsive">
@@ -65,7 +65,8 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href=""><i class="fa fa-edit text-primary"></i></a>
+                                                <a href="{{ route('super-admin.admin.edit', $school->id) }}"><i
+                                                        class="fa fa-edit text-primary"></i></a>
                                                 <a href=""><i class="fa fa-trash text-danger"></i></a>
                                             </td>
                                         </tr>

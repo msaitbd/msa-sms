@@ -24,9 +24,9 @@ class AdminRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
-            'email' => 'required|email|string|max:100|unique:users,email',
-            'password' => 'required|string|min:6',
-            'phone' => 'required',
+            'email' => 'required|email|string|max:100|unique:users,email,' . $this->user_id,
+            'password' => 'nullable|string|min:6',
+            'phone' => 'required|unique:users,phone,' . $this->user_id,
             'school_name' => 'required',
             'address' => 'required',
             'service_charge' => 'required|numeric',

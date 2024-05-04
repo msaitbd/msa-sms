@@ -30,4 +30,10 @@ class AdminController extends Controller
     {
         return $this->adminModule->store($request);
     }
+
+    public function edit($id)
+    {
+        $data['school'] = $this->adminModule->schoolGetById($id);
+        return view('super_admin.admin.edit', $data);
+    }
 }
