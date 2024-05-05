@@ -17,7 +17,7 @@ class SchoolModule
                 $q->where('admin_id', auth()->id());
             })
             ->with('admin')
-            ->orderByDesc('id')
+            ->orderBy('admin_id', 'asc')
             ->get();
         return $data;
     }

@@ -38,6 +38,7 @@
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Address</th>
+                                        <th>Admin</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -56,6 +57,9 @@
                                             </td>
                                             <td>
                                                 <span>{{ Str::limit($school->address, 25, '...') }}</span>
+                                            </td>
+                                            <td>
+                                                <span>{{ $school->admin->name }}</span>
                                             </td>
                                             <td>
                                                 @if ($school->status == STATUS_ACTIVE)
