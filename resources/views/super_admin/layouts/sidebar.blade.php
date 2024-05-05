@@ -17,12 +17,12 @@
         </li>
         <li>
             <a href="{{ route('super-admin.admin.index') }}">
-                <span>School Admin List</span>
+                <span>Admin List</span>
             </a>
         </li>
         <li>
-            <a href="#">
-                <span>School Admin Create</span>
+            <a href="{{ route('super-admin.school.index') }}">
+                <span>School List</span>
             </a>
         </li>
     </ul>

@@ -5,11 +5,11 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Http\Module\AdminModule;
 use App\Http\Requests\AdminRequest;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public $adminModule;
+
     public function __construct()
     {
         $this->adminModule = new AdminModule;
@@ -17,7 +17,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $data['schools'] = $this->adminModule->getAll();
+        $data['admins'] = $this->adminModule->getAll();
         return view('super_admin.admin.index', $data);
     }
 
@@ -28,12 +28,17 @@ class AdminController extends Controller
 
     public function store(AdminRequest $request)
     {
-        return $this->adminModule->store($request);
+        $data = $this->adminModule->store($request);
+        if ($data->getData()->status == true) {
+            return redirect()->route('super-admin.admin.index')->with('success', $data->getData()->message);
+        } else {
+            return redirect()->back()->with('error', $data->getData()->message);
+        }
     }
 
     public function edit($id)
     {
-        $data['school'] = $this->adminModule->schoolGetById($id);
+        $data['school'] = $this->adminModule->getById($id);
         return view('super_admin.admin.edit', $data);
     }
 }

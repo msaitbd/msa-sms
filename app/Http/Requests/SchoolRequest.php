@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdminRequest extends FormRequest
+class SchoolRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,10 @@ class AdminRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
-            'email' => 'required|email|string|max:100|unique:users,email,' . $this->id,
-            'password' => 'nullable|string|min:6',
-            'phone' => 'required|unique:users,phone,' . $this->id,
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'address' => 'required',
         ];
     }
 }

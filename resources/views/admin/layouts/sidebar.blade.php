@@ -15,5 +15,10 @@
                 <span>Dashboard</span>
             </a>
         </li>
+        <li class="mm-active">
+            <a href="{{ route('admin.settings.school') }}">
+                <span>School Setting</span>
+            </a>
+        </li>
     </ul>
 </section>

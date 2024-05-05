@@ -2,40 +2,49 @@
 
 namespace App\Http\Module;
 
-use App\Models\AdminSchool;
 use App\Models\User;
+use App\Traits\ResponseTrait;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminModule
 {
+    use ResponseTrait;
     public function getAll()
     {
-        $data = AdminSchool::query()
-            ->with('admin')
+        $data = User::query()
+            ->where('type', USER_TYPE_ADMIN)
             ->orderByDesc('id')
             ->get();
         return $data;
     }
+
+    public function getById($id)
+    {
+        return User::query()
+            ->when(auth()->user()->type != USER_TYPE_SUPER_ADMIN, function ($q) {
+                $q->where('admin_id', auth()->id());
+            })
+            ->findOrFail($id);
+    }
+
     public function store($request)
     {
         DB::beginTransaction();
         try {
-            if ($request->id && $request->user_id) {
-                $user = User::findOrFail($request->user_id);
-                $adminSchool = AdminSchool::findOrFail($request->id);
+            if ($request->id) {
+                $user = User::findOrFail($request->id);
                 if ($request->password) {
                     $user->password = Hash::make($request->password);
                 }
             } else {
                 $user = new User();
-                $adminSchool = new AdminSchool();
                 $user->password = Hash::make($request->password ?? 123456);
             }
             $user->first_name = $request->first_name;
-            $user->last_name = $request->first_name . ' ' . $request->last_name;
-            $user->name = $request->last_name;
+            $user->last_name = $request->last_name;
+            $user->name = $request->first_name . ' ' . $request->last_name;
             $user->email = $request->email;
             $user->phone = $request->phone;
             $user->type = USER_TYPE_ADMIN;
@@ -45,26 +54,11 @@ class AdminModule
             $user->admin_id = $user->id;
             $user->save();
 
-            $adminSchool->admin_id = $user->id;
-            $adminSchool->school_name = $request->school_name;
-            $adminSchool->school_name = $request->school_name;
-            $adminSchool->service_charge = $request->service_charge;
-            $adminSchool->install_fee = $request->install_fee;
-            $adminSchool->address = $request->address;
-            $adminSchool->created_by = auth()->id();
-            $adminSchool->save();
             DB::commit();
-            return redirect()->route('super-admin.admin.index')->with('success', 'Admin School Created Successfully');
+            return $this->success([], __('Admin Created Successfully'));
         } catch (Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
+            return $this->error([], getResponseMessage($e, $e->getMessage()));
         }
-    }
-
-    public function schoolGetById($id)
-    {
-        return AdminSchool::query()
-            ->with('admin')
-            ->findOrFail($id);
     }
 }

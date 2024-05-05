@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin_schools', function (Blueprint $table) {
+        Schema::create('schools', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('admin_id');
-            $table->string('school_name')->nullable();
+            $table->string('name')->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('email', 100)->nullable();
             $table->string('address')->nullable();
             $table->tinyInteger('status')->default(STATUS_INACTIVE);
             $table->decimal('service_charge', 12, 2)->default(0);
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin_schools');
+        Schema::dropIfExists('schools');
     }
 };
